@@ -1,0 +1,133 @@
+@import "../../node_modules/bootstrap/dist/css/bootstrap.css";
+@import '../../node_modules/swiper/css/swiper.min.css';
+@import '../../node_modules/animate.css/animate.min.css';
+@import '../scss/section/slider';
+@import "../scss/indentation";
+@import "../scss/ui/flex";
+@import "../scss/ui/fs";
+@import "../scss/ui/color";
+@import "../scss/ui/btn";
+@import "../scss/ui/icon";
+@import "../scss/ui/link";
+@import "../scss/ui/table";
+@import "../scss/ui/list";
+
+// sections
+// @import "../scss/section/header";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    // height: 9000px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.tac {
+    text-align: center;
+}
+
+.tt__upercase {
+    text-transform: uppercase;
+}
+
+.opac {
+    &__07 {
+        opacity: 0.7;
+    }
+
+    &__03 {
+        opacity: 0.3;
+    }
+}
+
+.fontw-700 {
+    font-weight: 700;
+}
+
+.fontw-400 {
+    font-weight: 400;
+}
+
+.wdh-100 {
+    width: 100%;
+}
+
+
+
+
+.display {
+
+    &__2000 {
+        &_none {
+            @media (max-width: 2000px) {
+                display: none;
+            }
+        }
+
+        &_block {
+            @media (max-width: 2000px) {
+                display: block;
+            }
+        }
+    }
+
+
+    &__1400 {
+        &_none {
+            @media (max-width: 1400px) {
+                display: none;
+            }
+        }
+
+        &_block {
+            @media (max-width: 1400px) {
+                display: block;
+            }
+        }
+    }
+
+    &__1200 {
+        &_none {
+            @media (max-width: 1200px) {
+                display: none;
+            }
+        }
+
+        &_block {
+            @media (max-width: 1200px) {
+                display: block;
+            }
+        }
+    }
+
+    &__991 {
+        &_none {
+            @media (max-width: 991px) {
+                display: none;
+            }
+        }
+
+        &_block {
+            @media (max-width: 991px) {
+                display: block;
+            }
+        }
+    }
+
+    &__767 {
+        &_none {
+            @media (max-width: 767px) {
+                display: none;
+            }
+        }
+
+        &_block {
+            @media (max-width: 767px) {
+                display: block;
+            }
+        }
+    }
+}

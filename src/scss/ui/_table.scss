@@ -1,0 +1,15 @@
+
+
+.table__price {
+
+
+    &_header {
+
+    }
+
+}
+
+.table__price.table>tbody>tr>td, .table__price.table>thead>tr>td {
+    padding: 20px 15px;
+    border-top: 1px solid #28b782;
+}

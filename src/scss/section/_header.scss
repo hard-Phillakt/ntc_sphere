@@ -1,0 +1,46 @@
+.header {
+    height: 100vh;
+
+    .layer {
+        width: 100%;
+        margin: 0 7%;
+    }
+
+    .article {
+        &__one {
+        }
+
+        &__two {
+        }
+
+        &__three {
+        }
+
+        &-wrap {
+            display: flex;
+            flex-wrap: wrap;
+
+            li {
+                article {
+                    padding: 30px;
+                    background: url("../../images/header/slider/articles/article-1.png") no-repeat;
+                    background-position: center;
+                    background-size: cover;
+
+                    h3 {
+                        line-height: 1.5;
+
+                        a {
+                            text-decoration: none;
+                            
+                            &:hover {
+                                text-decoration: none;
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
