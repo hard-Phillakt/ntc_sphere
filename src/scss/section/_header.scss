@@ -43,4 +43,19 @@
             }
         }
     }
+
+
+    .animate {
+        position: relative;
+
+        &__layer_0, &__layer_1, &__layer_2 {
+            position: absolute;
+            background: #00376D;
+            width: 100%;
+            height: 100%;
+            left: 0;
+
+            transform: translate(-100%, 0px);
+        }
+    }
 }
