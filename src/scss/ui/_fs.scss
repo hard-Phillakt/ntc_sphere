@@ -88,6 +88,17 @@
   }
 }
 
+.fs-60 {
+  font-size: 60px;
+
+  @media (max-width: 991px) and (min-width: 769px) {
+    font-size: calc(60px / 1.6);
+  }
+  @media (max-width: 768px) and (min-width: 300px) {
+    font-size: calc(60px / 1.9);
+  }
+}
+
 .fs-80 {
   font-size: 80px;
 

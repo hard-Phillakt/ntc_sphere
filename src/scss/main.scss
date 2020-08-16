@@ -1,7 +1,8 @@
 @import "../../node_modules/bootstrap/dist/css/bootstrap.css";
-@import '../../node_modules/swiper/css/swiper.min.css';
-@import '../../node_modules/animate.css/animate.min.css';
-@import '../scss/section/slider';
+@import "../../node_modules/swiper/css/swiper.min.css";
+@import "../../node_modules/animate.css/animate.min.css";
+@import "../../node_modules/hamburgers/dist/hamburgers.min.css";
+@import "../../node_modules/material-icons/iconfont/material-icons.css";
 @import "../scss/indentation";
 @import "../scss/ui/flex";
 @import "../scss/ui/fs";
@@ -20,9 +21,13 @@
     padding: 0;
 }
 
+.h1, .h2, .h3, h1, h2, h3 {
+    margin: 0;
+}
+
 body {
     // height: 9000px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .tac {
@@ -55,11 +60,7 @@ body {
     width: 100%;
 }
 
-
-
-
 .display {
-
     &__2000 {
         &_none {
             @media (max-width: 2000px) {
@@ -73,7 +74,6 @@ body {
             }
         }
     }
-
 
     &__1400 {
         &_none {

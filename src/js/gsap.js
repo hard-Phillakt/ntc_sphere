@@ -8,38 +8,44 @@ class Layers {
         this.gsap = gsap;
     }
 
-    removeTween() {
-        this.tl.remove(myTween);
-    }
 
     // Показ синего фона на 50% 
-    startViewLayer(item) {
-
-        // console.log(arg);
+    startViewLayer(item, title) {
 
         this.gsap.to(item, {
             x: `-50%`,
             duration: .6,
-            // ease: "elastic",
-            delay: 1,
+            delay: .6
         })
 
+        this.gsap.to(title, {
+            duration: .6,
+            opacity: 1,
+            delay: .6,
+            x: `-2%`,
+            // zIndex: 1,
+            '-webkit-text-stroke': `2px #ffffff`,
+            color: 'transparent'
+        })
     }
 
-    endViewLayer() {
+    endViewLayer(item, title) {
+
+        this.gsap.to(title, {
+            x: `-29%`,
+            opacity: 0,
+            '-webkit-text-stroke': `0px transparent`,
+        }) 
 
         // Закрытие фона
-        this.gsap.to(".animate__layer_0", {
+        this.tl.to(item, {
+            x: `0%`,
+            duration: .2,
+        }).to(item, {
             x: `-100%`,
+            delay: .3
         })
 
-        this.gsap.to(".animate__layer_1", {
-            x: `-100%`,
-        })
-
-        this.gsap.to(".animate__layer_2", {
-            x: `-100%`,
-        })
     }
 
 }
@@ -47,38 +53,3 @@ class Layers {
 
 export default Layers;
 
-
-
-
-
-
-// tl.to(".animate__layer_1", {
-//     x: `0%`,
-//     duration: 1,
-//     delay: 1
-// }).to(".animate__layer_1", {
-//     x: `100%`,
-//     duration: 1,
-//     delay: 1
-// }).to(".animate__layer_1", {
-//     x: `-100%`,
-//     zIndex: 0
-
-// }).to(".animate__layer_1", {
-//     zIndex: 1
-// })
-
-
-    //  Закрытие фона
-    // tl.to(".animate__layer_1", {
-    //     x: `100%`,
-    //     duration: .6,
-    //     delay: 1
-    // }).to(".animate__layer_1", {
-    //     x: `-100%`,
-    //     width: 0
-    // }).to(".animate__layer_1", {
-    //     x: `-100%`,
-    //     background: '#00376D',
-    //     width: '100%'
-    // })

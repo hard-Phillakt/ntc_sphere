@@ -11,8 +11,8 @@ import Layers from './gsap';
 var swiper = new Swiper('#header-slider', {
     direction: 'vertical',
     loop: true,
-    delay: 3000,
-    // speed: 300,
+    // delay: 3000,
+    speed: 600,
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -39,49 +39,60 @@ let goSlide = true;
 
 $(document).ready(function () {
 
+    // Инициализируем начальный слайд
+    layersGsap.startViewLayer(`.animate__layer_0`,`.title__h1_0`);
+
     $('#header-slider').on('wheel', function (e) {
-    
+
         var round = Math.round(e.originalEvent.deltaY);
 
         if (Math.sign(round) === 1) {
-            
-            if(goSlide){
 
-                layersGsap.endViewLayer();
-                
+            if (goSlide) {
+
                 goSlide = false;
 
-                swiper.slideNext(1000, true);
+                // Очищаем от анимации
+                layersGsap.endViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__h1_${swiper.realIndex}`);
 
-                layersGsap.startViewLayer(`.animate__layer_${swiper.realIndex}`);
-    
-                setTimeout(() => {
-                    goSlide = 1;
-                }, 3000)
+                swiper.slideNext(600, true);
+
+                layersGsap.startViewLayer(`.animate__layer_${swiper.realIndex}`,`.title__h1_${swiper.realIndex}` , callBack());
+
+                function callBack() {
+                    setTimeout(() => {
+                        goSlide = true;
+                    }, 1000)
+                }
+
+
             }
 
         } else {
 
+            if (goSlide) {
 
-            if(goSlide){
-
-                layersGsap.endViewLayer();
-                
                 goSlide = false;
 
-                swiper.slidePrev(1000, true);
+                // Очищаем от анимации
+                layersGsap.endViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__h1_${swiper.realIndex}`);
 
-                layersGsap.startViewLayer(`.animate__layer_${swiper.realIndex}`);
-    
-                setTimeout(() => {
-                    goSlide = 1;
-                }, 3000)
+                swiper.slidePrev(600, true);
+
+                layersGsap.startViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__h1_${swiper.realIndex}`, callBack());
+
+                function callBack() {
+                    setTimeout(() => {
+                        goSlide = true;
+                    }, 1000)
+                }
+
             }
 
         }
 
     })
-    
+
 })
 
 

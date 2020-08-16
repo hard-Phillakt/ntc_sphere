@@ -4,35 +4,82 @@
     .layer {
         width: 100%;
         margin: 0 7%;
+        z-index: 1;
+
+        ul {
+            li {
+
+            }
+        }
     }
 
     .article {
-        &__one {
-        }
-
-        &__two {
-        }
-
-        &__three {
-        }
 
         &-wrap {
             display: flex;
             flex-wrap: wrap;
 
             li {
-                article {
-                    padding: 30px;
-                    background: url("../../images/header/slider/articles/article-1.png") no-repeat;
-                    background-position: center;
-                    background-size: cover;
+                width: 300px;
+
+                .article {
+                    display: flex;
+                    align-items: center;
+                    height: 160px;
+                    padding: 0 15px;
+                    position: relative;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: #00235a8a;
+                    }
+
+                    &__one {
+                        background: url("../../images/header/slider/test/one.jpg") no-repeat;
+                        background-position: 50%;
+                        background-size: 100%;
+                        transition: all .3s ease-in-out;
+
+                        &:hover {
+                            background-size: 110%; 
+                        }
+                    }
+                    &__two {
+                        background: url("../../images/header/slider/test/two.jpg") no-repeat;
+                        background-position: 50%;
+                        background-size: 100%;
+                        transition: all .3s ease-in-out;
+
+                        &:hover {
+                            background-size: 110%; 
+                        }
+                    }
+                    &__three {
+                        background: url("../../images/header/slider/test/three.jpg") no-repeat;
+                        background-position: 50%;
+                        background-size: 100%;
+                        transition: all .3s ease-in-out;
+
+                        &:hover {
+                            background-size: 110%; 
+                        }
+                    }
 
                     h3 {
                         line-height: 1.5;
+                        margin: 0;
 
-                        a {
-                            text-decoration: none;
-                            
+                        span {
+                            display: inline-flex;
+                            color: #fff;
+                            position: relative;
+                            z-index: 1;
+
                             &:hover {
                                 text-decoration: none;
                                 color: #fff;
@@ -44,13 +91,14 @@
         }
     }
 
-
     .animate {
         position: relative;
 
-        &__layer_0, &__layer_1, &__layer_2 {
+        &__layer_0,
+        &__layer_1,
+        &__layer_2 {
             position: absolute;
-            background: #00376D;
+            background: #00376d;
             width: 100%;
             height: 100%;
             left: 0;
@@ -58,4 +106,11 @@
             transform: translate(-100%, 0px);
         }
     }
+
+    // .title {
+    //     transform: translateX(-29%);
+    //     font-weight: 700;
+    //     opacity: 0;
+    //     z-index: 1;
+    // }
 }
