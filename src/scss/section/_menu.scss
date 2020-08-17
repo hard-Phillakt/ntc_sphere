@@ -9,19 +9,38 @@
     margin: 0 6%;
 
     ul {
-
         li {
 
-            a {
-                text-decoration: none;
-                font-weight: 700;
-                text-transform: uppercase;
-
-                &:hover {
+            .ul-box {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                position: absolute;
+                clip: rect(0px, 200px, 20px, 0px);
+    
+                a {
+                    display: inline-flex;
                     text-decoration: none;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    transition: all .2s ease-in-out;
+    
+                    &:hover {
+                        text-decoration: none;
+                        color: #000;
+                        opacity: .7;
+                    }
+                }
+    
+                &:hover .menu__link_first {
+                    transform: translateY(-20px);
+                }
+                &:hover .menu__link_last {
+                    transform: translateY(-20px);
                 }
             }
         }
+
     }
 
     .hamburger {

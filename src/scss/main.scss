@@ -25,9 +25,29 @@
     margin: 0;
 }
 
+#app {
+
+    .cursor {
+        // display: none;
+        display: inline-flex;
+        width: 30px;
+        height: 30px;
+        background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        border-radius: 50px;
+        border: 2px solid #eeeeee59;
+        pointer-events: none;
+        translate: all .3s ease-in-out;
+    }
+}
+
 body {
-    // height: 9000px;
     font-family: "Montserrat", sans-serif;
+    cursor: grab;
+    overflow: hidden;
 }
 
 .tac {
