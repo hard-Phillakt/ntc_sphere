@@ -91,7 +91,10 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    // host: '127.0.0.1',
+    // open: true,
+    // hot: true
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -111,8 +114,25 @@ module.exports = {
         'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
       }
     }),
-    new ImageminPlugin({ 
-      test: /\.(jpe?g|png|gif|svg)$/i 
+    new HtmlWebpackPlugin({
+      filename: 'about.html',
+      template: 'src/assets/about.html',
+      minify: {
+        mode: 'production',
+        collapseWhitespace: true,
+        removeComments: true,
+        rNWrYVqxCXRmKPRaFd1MJhWs4SqUkaf7rd: true,
+        rNWrYVqxCXRmKPRaFd1MJhWs4SqUkaf7rd: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      },
+      scriptLoading: 'defer',
+      meta: {
+        'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      }
+    }),
+    new ImageminPlugin({
+      test: /\.(jpe?g|png|gif|svg)$/i
     }),
     new OptimizeCSSAssetsPlugin(),
     new MiniCssExtractPlugin({

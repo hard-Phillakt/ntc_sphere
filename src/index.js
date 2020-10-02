@@ -6,6 +6,11 @@ import '../src/scss/section/_menu.scss';
 import '../src/scss/section/_slider.scss';
 import '../src/scss/section/_footer.scss';
 import '../src/scss/section/_sidebar-menu.scss';
+import '../src/scss/section/_header-second.scss';
+import '../src/scss/section/_menu-second.scss';
+import '../src/scss/section/_breadcrumbs.scss';
+import '../src/scss/section/_content.scss';
+import '../src/scss/section/_footer-second.scss';
 
 
 // modules js
@@ -58,14 +63,12 @@ preloader.animeYoYo();
 
 $(document).ready(function () {
 
-    setTimeout(() => {
-        $('#preloader').css({
-            opacity: 0,
-            visibility: `hidden`
-        })
-    }, 2000)
-
-
+    // setTimeout(() => {
+    //     $('#preloader').css({
+    //         opacity: 0,
+    //         visibility: `hidden`
+    //     })
+    // }, 2000)
 
     // Переменная для разрешения переключения слайдера
     let goSlide = true;
@@ -75,7 +78,7 @@ $(document).ready(function () {
     // MENU ##################################
 
     let viewMenuFastLine = true;
-    $('.menu .menu__link').on('mouseover', function (e) {
+    $('.menu .menu__link, .header-second a').on('mouseover', function (e) {
         //  Длина в px ссылки
         let clientWidth = this.clientWidth;
         // Узел линии
@@ -86,63 +89,60 @@ $(document).ready(function () {
             viewMenuFastLine = false;
 
             // Анимация меню
-            menuAnime.menuFastLine(e, clientWidth, fastLine) 
-            delayAnime(() => { 
+            menuAnime.menuFastLine(e, clientWidth, fastLine)
+            delayAnime(() => {
                 viewMenuFastLine = true;
             }, 600);
         }
 
     });
 
-    $('.menu a').on('mouseover', function (e) {
-        // Анимация курсора (увеличение сферы) при наведении на меню
-        cursorAnime.cursorIncrease();
-    });
-
-    $('.menu a').on('mouseout', function (e) {
-        // Анимация курсора (уменьшение сферы) при наведении на меню
-        cursorAnime.cursorDecrease();
-    });
     // MENU END ###############################
 
+    // FOOTER ###############################
+    let viewFooterFastLine = true;
+    $('.footer a').on('mouseover', function (e) {
+        //  Длина в px ссылки
+        let clientWidth = this.clientWidth;
+        // Узел линии
+        let fastLine = $(e.target).next();
 
-    //  ARTICLE ##################################
-    // Наведение курсора на article
-    $('.article').on('mouseover', function (e) {
-        // Анимация курсора (увеличение сферы) при наведении на меню
+        if (viewFooterFastLine && fastLine) {
+
+            viewFooterFastLine = false;
+
+            // Анимация меню
+            menuAnime.menuFastLine(e, clientWidth, fastLine)
+            delayAnime(() => {
+                viewFooterFastLine = true;
+            }, 600);
+        }
+
+    });
+    // FOOTER END ###############################
+
+    //  Увеличение сферы при наведении на объект ###############################
+    $('.menu a, .navigat-wrap__box, .footer a, .article, .swiper-pagination, .hamburger, .sidebar-menu ul li a').on('mouseover', function (e) {
+        // Анимация курсора (увеличение сферы) при наведении на объект
         cursorAnime.cursorIncrease();
     });
 
-    // Наведение курсора на article
-    $('.article').on('mouseout', function (e) {
-        // Анимация курсора (уменьшение сферы) при наведении на меню
+    $('.menu a, .navigat-wrap__box, .footer a, .article, .swiper-pagination, .hamburger, .sidebar-menu ul li a').on('mouseout', function (e) {
+        // Анимация курсора (уменьшение сферы) при наведении на объект
         cursorAnime.cursorDecrease();
     });
+    //  Увеличение сферы при наведении на объект END ###########################
 
-    //  ARTICLE END ##############################
-
-
-    //  PAGINATION ##################################
-    // Анимация курсора (увеличение сферы) при наведении на блок с навигацией
-    $('.navigat-wrap__box').on('mouseover', function (e) {
-        // Анимация курсора (увеличение сферы) при наведении на меню
-        cursorAnime.cursorIncrease();
-    });
-
-    // Анимация курсора (уменьшение сферы) при наведении на блок с навигацией
-    $('.navigat-wrap__box').on('mouseout', function (e) {
-        // Анимация курсора (уменьшение сферы) при наведении на меню
-        cursorAnime.cursorDecrease();
-    });
-
-    //  PAGINATION END ##############################
 
     // MOVECURSOR ##############################
     $('#app').on('mousemove', function (e) {
         let x = e.originalEvent.clientX - 15;
         let y = e.originalEvent.clientY - 15;
-        // Движение сферы за курсором 
-        cursorAnime.moveSphereForCursor(x, y);
+
+        if ($('#app .cursor').is('.cursor')) {
+            // Движение сферы за курсором 
+            cursorAnime.moveSphereForCursor(x, y);
+        }
     });
 
     // Cursor - grabbing
@@ -191,7 +191,7 @@ $(document).ready(function () {
     delayAnime(() => { text.animeViewText(`.list-items`, `.list-items__0`) }, 300);
 
     // Скрываем article
-    delayAnime(() => { article.animeViewBlock(`.article-wrap li`, `.article__li_0`) }, 600);
+    delayAnime(() => { article.animeViewBlock(`.article-wrap li`, `.article__li_0`) }, 300);
 
     //  Инициализируем заголовок, описание, блоки статей END ##############################
 
@@ -214,7 +214,6 @@ $(document).ready(function () {
         },
         pagination: {
             el: '.swiper-pagination',
-            clickable: true,
         },
     });
 
@@ -243,9 +242,9 @@ $(document).ready(function () {
 
 
     // Инициализируем начальный слайд Gray BG
-    layers.startViewLayer(`.animate__layer_0`, `.title__h1_0`);
+    layers.startViewLayer(`.animate__layer_0`, `.title__0`);
 
-    
+
     $('#header-slider').on('wheel', function (e) {
 
 
@@ -261,11 +260,11 @@ $(document).ready(function () {
                 goSlide = false;
 
                 // Очищаем от анимации
-                layers.endViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__h1_${swiper.realIndex}`);
+                layers.endViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`);
 
                 swiper.slideNext(1500, true);
 
-                layers.startViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__h1_${swiper.realIndex}`, callBack());
+                layers.startViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`, callBack());
 
                 function callBack() {
                     setTimeout(() => {
@@ -282,11 +281,11 @@ $(document).ready(function () {
                 goSlide = false;
 
                 // Очищаем от анимации
-                layers.endViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__h1_${swiper.realIndex}`);
+                layers.endViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`);
 
                 swiper.slidePrev(1500, true);
 
-                layers.startViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__h1_${swiper.realIndex}`, callBack());
+                layers.startViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`, callBack());
 
                 function callBack() {
                     setTimeout(() => {
@@ -332,6 +331,38 @@ $(document).ready(function () {
     // Задаём текущий год в футоре ##############################
     $('#full-year').html(new Date().getFullYear());
     // Задаём текущий год в футоре end ##########################
+
+
+
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0dGVtcGxhdGUiLCJhIjoiY2s0M3I5ZHgzMGEzNDNucXM1cDd0dzl3cSJ9.a2wjLlxz8LzWj9nIoGsshw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v10',
+        center: [-73.9751,40.7289], // starting position
+        zoom: 13 // starting zoom
+    });
+		
+    // create the popup
+    var popup = new mapboxgl.Popup({ offset: 40 }).setText(
+        '756 Livingston Street, Brooklyn, NY 11201'
+    );
+
+    // create DOM element for the marker
+    var el = document.createElement('div');
+    el.id = 'marker';
+    
+    // create the marker
+    new mapboxgl.Marker(el)
+        .setLngLat([-73.9751,40.7289])
+        .setPopup(popup) // sets a popup on this marker
+        .addTo(map);
+
+    // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+
+    // disable map zoom when using scroll
+    map.scrollZoom.disable();
 });
 
 

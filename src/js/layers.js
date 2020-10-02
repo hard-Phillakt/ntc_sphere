@@ -17,26 +17,11 @@ class Layers {
             delay: .6
         })
 
-        this.gsap.to(title, {
-            duration: .6,
-            opacity: 1,
-            delay: .6,
-            x: `-2%`,
-            // zIndex: 1,
-            '-webkit-text-stroke': `2px #ffffff`,
-            color: 'transparent'
-        })
     }
 
-    endViewLayer(item, title) {
+    // Закрытие фона
+    endViewLayer(item) {
 
-        this.gsap.to(title, {
-            x: `-29%`,
-            opacity: 0,
-            '-webkit-text-stroke': `0px transparent`,
-        }) 
-
-        // Закрытие фона
         this.tl.to(item, {
             x: `0%`,
             duration: .2,

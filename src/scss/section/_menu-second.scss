@@ -1,0 +1,31 @@
+
+.menu-second {
+
+    &__list {
+        background: linear-gradient(90.01deg, #17217A 0.01%, #00366D 99.66%);
+        border-radius: 60px;
+        padding: 15px 30px;   
+        margin: 0;
+        list-style: none;
+
+        @media (max-width: 992px) and (min-width: 300px) {
+            display: none;
+        }
+
+        li {
+
+            a {
+                transition: all .3s ease-in-out;
+                
+                &:hover {
+                    color: #FF5E14;
+                    text-decoration: none;
+                }
+
+                &:focus {
+                    color: #FF5E14;
+                }
+            }
+        }
+    }
+}

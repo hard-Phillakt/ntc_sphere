@@ -8,6 +8,20 @@
     z-index: 1;
     padding: 0 6%;
 
+
+    &__link {
+        position: relative;
+    }
+
+    a {
+        display: inline-flex;
+        transition: all .3s ease-in-out;
+    }
+
+    a:hover {
+        color: #ff5e14;
+    }
+
     @media (max-width: 500px) and (min-width: 300px) {
         height: 100px;
     }
@@ -44,7 +58,7 @@
 
                 &:hover {
                     .material-icons {
-                        transform: translate(15px, 0);
+                        // transform: translate(15px, 0);
                     }
                 }
             }
@@ -53,7 +67,8 @@
 
                 &:hover {
                     .material-icons {
-                        transform: translate(-15px) rotate(180deg);
+                        // transform: translate(-15px) rotate(180deg);
+                        transform: rotate(180deg);
                     }
                 }
             }

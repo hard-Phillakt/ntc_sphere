@@ -82,9 +82,25 @@ h3 {
 
 body {
     font-family: "Montserrat", sans-serif;
+}
+
+#app {
     cursor: grab;
     overflow: hidden;
 }
+
+#page {
+
+
+    .hamburger {
+        display: none;
+
+        @media (max-width: 992px) and (min-width: 300px) {
+            display: block;
+        }
+    }
+}
+
 
 .tac {
     text-align: center;
@@ -206,13 +222,16 @@ body {
 
 .hamburger {
     position: fixed;
-    top: 30px;
+    top: 15px;
     right: 15px;
     z-index: 4;
 
+    @media (max-width: 1400) and (min-width: 1200px) {
+        top: 10px;
+    }
+
     @media (max-width: 500px) and (min-width: 300px) {
         top: 15px;
-        right: 0;
     }
 }
 

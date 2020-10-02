@@ -11,6 +11,7 @@ class CursorAnime {
 
     // Движение сферы за курсором 
     moveSphereForCursor(...param) {
+
         this.gsap.to(`.cursor`, {
             transform: `translate(${param[0]}px, ${param[1]}px)`,
             duration: .3,
@@ -56,7 +57,7 @@ class CursorAnime {
             left: `-10px`,
             duration: .3,
         });
-        
+
     }
 
     cursorDecrease() {

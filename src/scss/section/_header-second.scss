@@ -1,0 +1,61 @@
+.header-wrap {
+    background: url("../../images/header/header-circle.svg") no-repeat;
+    background-position: 100% 100%;
+}
+
+.header-second {
+    padding: 45px 0;
+
+    @media (max-width: 992px) and (min-width: 300px) {
+        padding: 15px 0;
+    }
+
+    &-row {
+        @media (max-width: 600px) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .logo {
+        @media (max-width: 600px) {
+            margin-bottom: 30px;
+        }
+
+        img {
+            width: 200px;
+
+            @media (max-width: 1400px) and (min-width: 1300px) {
+                width: 200px;
+            }
+
+            @media (max-width: 1300px) and (min-width: 1200px) {
+                width: 180px;
+            }
+
+            @media (max-width: 992px) and (min-width: 300px) {
+                width: 180px;
+            }
+        }
+    }
+
+    &__desc {
+        @media (max-width: 992px) and (min-width: 300px) {
+            display: none;
+        }
+    }
+
+    &__link {
+        position: relative;
+    }
+
+    a {
+        display: inline-flex;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: #ff5e14;
+        }
+    }
+}

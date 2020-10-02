@@ -46,7 +46,8 @@
   },
   "scripts": {
     "build": "webpack --mode production",
-    "serv": "webpack-dev-server --open"
+    "serv": "webpack-dev-server --open", 
+    "dev": "webpack-dev-server --host 127.0.0.1 --port 80"
   },
   "keywords": [],
   "author": "",
