@@ -11,12 +11,14 @@ class Article {
     animeViewBlock(item, realIndex){
 
         this.gsap.to(item, {
-            clip: `rect(0px, 300px, 160px, 300px)`,
-            x: 100,
+            opacity: 0,
+            visibility: "hidden",
+            x: 150,
         });
 
         this.gsap.to(realIndex, {
-            clip: `rect(-30px, 340px, 190px, -30px)`,
+            opacity: 1,
+            visibility: "visible",
             x: 0,
             delay: .9,
             duration: .3,

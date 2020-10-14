@@ -33,6 +33,7 @@ import delayAnime from './js/time';
 import humburger from './js/humburger';
 import sidebar from './js/anime-sidebar-menu';
 import Preloader from './js/anime-preloader';
+import initMapBox from './js/mapbox';
 
 // Init humburger
 humburger();
@@ -191,7 +192,9 @@ $(document).ready(function () {
     delayAnime(() => { text.animeViewText(`.list-items`, `.list-items__0`) }, 300);
 
     // Скрываем article
-    delayAnime(() => { article.animeViewBlock(`.article-wrap li`, `.article__li_0`) }, 300);
+    delayAnime(() => { article.animeViewBlock(`.article-wrap`, `.article-wrap-act-0`) }, 300);
+
+    // delayAnime(() => { article.animeViewBlock(`.article-wrap li`, `.article__li_0`) }, 300);
 
     //  Инициализируем заголовок, описание, блоки статей END ##############################
 
@@ -207,6 +210,9 @@ $(document).ready(function () {
         loop: true,
         delay: 3000,
         speed: 1500,
+        autoplay: {
+            delay: 5000,
+        },
         effect: 'slide',
         navigation: {
             nextEl: '.swiper-button-next',
@@ -214,6 +220,7 @@ $(document).ready(function () {
         },
         pagination: {
             el: '.swiper-pagination',
+            clickable: true
         },
     });
 
@@ -227,22 +234,29 @@ $(document).ready(function () {
             // Очищаем фоны и добавляем новый
             sliderAnime.clearBGandSetBGactive(item, width, height, realIndex);
 
+            // layers.animateViewLayer(width, height, realIndex);
+
             // Скрываем заголовоки и показываем активный
-            delayAnime(() => { text.animeViewText(`.title`, `.title__${realIndex}`) }, 300);
+            delayAnime(() => { text.animeViewText(`.title`, `.title__${realIndex}`) }, 100);
 
             // Скрываем list-items и показываем активный
-            delayAnime(() => { text.animeViewText(`.list-items`, `.list-items__${realIndex}`) }, 600);
+            delayAnime(() => { text.animeViewText(`.list-items`, `.list-items__${realIndex}`) }, 300);
 
             // Скрываем article
-            delayAnime(() => { article.animeViewBlock(`.article-wrap li`, `.article__li_${realIndex}`) }, 900);
+            delayAnime(() => { article.animeViewBlock(`.article-wrap`, `.article-wrap-act-${realIndex}`) }, 300);
         });
+
+        delayAnime(() => {
+            swiper.autoplay.start();
+        }, 1000)
+        
 
     });
 
 
 
     // Инициализируем начальный слайд Gray BG
-    layers.startViewLayer(`.animate__layer_0`, `.title__0`);
+    // layers.animateViewLayer(width, height, swiper.realIndex);
 
 
     $('#header-slider').on('wheel', function (e) {
@@ -260,17 +274,16 @@ $(document).ready(function () {
                 goSlide = false;
 
                 // Очищаем от анимации
-                layers.endViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`);
+                // layers.endViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`);
 
                 swiper.slideNext(1500, true);
 
-                layers.startViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`, callBack());
+                // layers.startViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`, callBack());
 
-                function callBack() {
-                    setTimeout(() => {
-                        goSlide = true;
-                    }, 2000)
-                }
+                delayAnime(function(){
+                    goSlide = true;
+                    console.log(goSlide);
+                }, 2000)
             }
 
         } else {
@@ -281,17 +294,15 @@ $(document).ready(function () {
                 goSlide = false;
 
                 // Очищаем от анимации
-                layers.endViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`);
+                // layers.endViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`);
 
                 swiper.slidePrev(1500, true);
 
-                layers.startViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`, callBack());
+                // layers.startViewLayer(`.animate__layer_${swiper.realIndex}`, `.title__${swiper.realIndex}`, callBack());
 
-                function callBack() {
-                    setTimeout(() => {
-                        goSlide = true;
-                    }, 2000)
-                }
+                delayAnime(function(){
+                    goSlide = true;
+                }, 2000)
 
             }
 
@@ -332,37 +343,9 @@ $(document).ready(function () {
     $('#full-year').html(new Date().getFullYear());
     // Задаём текущий год в футоре end ##########################
 
+    //  Init MapBox
+    if($('#page #map').is('#map')) initMapBox();
 
-
-
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0dGVtcGxhdGUiLCJhIjoiY2s0M3I5ZHgzMGEzNDNucXM1cDd0dzl3cSJ9.a2wjLlxz8LzWj9nIoGsshw';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/light-v10',
-        center: [-73.9751,40.7289], // starting position
-        zoom: 13 // starting zoom
-    });
-		
-    // create the popup
-    var popup = new mapboxgl.Popup({ offset: 40 }).setText(
-        '756 Livingston Street, Brooklyn, NY 11201'
-    );
-
-    // create DOM element for the marker
-    var el = document.createElement('div');
-    el.id = 'marker';
-    
-    // create the marker
-    new mapboxgl.Marker(el)
-        .setLngLat([-73.9751,40.7289])
-        .setPopup(popup) // sets a popup on this marker
-        .addTo(map);
-
-    // Add zoom and rotation controls to the map.
-    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-
-    // disable map zoom when using scroll
-    map.scrollZoom.disable();
 });
 
 

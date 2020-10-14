@@ -4,11 +4,12 @@
 
     &__h1 {
         position: absolute;
-        top: 15%;
+        top: 15vh;
         clip: rect(80px, 1000px, 80px, 0px);
         transform: translate(-30px, 0px);
 
         @media (max-width: 992px) and (min-width: 300px) {
+            top: 20vh;
             font-size: 30px;
         }
     }

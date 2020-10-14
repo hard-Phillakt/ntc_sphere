@@ -10,6 +10,7 @@ const animeText = new Text();
 const tl = gsap.timeline();
 
 let count = 1;
+
 let viewSidebarMenu = true;
 const hamburger = () => {
 
@@ -26,103 +27,85 @@ const hamburger = () => {
                 // Показываем sidebarMenu
                 viewSideBar.animeViewBlockMenu();
 
+                let countLi = 1;
                 delayAnime(() => {
+                    $('.sidebar-menu__list li').each((i, item) => {
 
-                    tl.to('.sidebar-menu ul li:nth-child(1)', {
-                        y: 0,
-                        opacity: 1,
-                        duration: .1
-                    }).to('.sidebar-menu ul li:nth-child(2)', {
-                        y: 0,
-                        opacity: 1,
-                        duration: .1
-                    }).to('.sidebar-menu ul li:nth-child(3)', {
-                        y: 0,
-                        opacity: 1,
-                        duration: .1
-                    }).to('.sidebar-menu ul li:nth-child(4)', {
-                        y: 0,
-                        opacity: 1,
-                        duration: .1
-                    }).to('.sidebar-menu ul li:nth-child(5)', {
-                        y: 0,
-                        opacity: 1,
-                        duration: .1,
-                        onComplete: () => {
-                            viewSidebarMenu = true;
+                        tl.to(`.sidebar-menu ul li:nth-child(${countLi + 1})`, {
+                            y: 0,
+                            opacity: 1,
+                            duration: .1
+                        })
+
+                        if (countLi === $('.sidebar-menu__list li').length) {
+
+                            tl.to(`.sidebar-menu ul li:nth-child(${countLi + 1})`, {
+                                y: 0,
+                                opacity: 1,
+                                duration: .1,
+                                onComplete: () => {
+                                    viewSidebarMenu = true;
+                                }
+                            })
+
                         }
-                    })
-
+                        countLi++;
+                    });
                 }, 1000);
 
 
             } else {
-                
+
                 viewSidebarMenu = false;
 
                 $(this).removeClass('is-active');
 
-                tl.to('.sidebar-menu ul li:nth-child(1)', {
-                    y: -30,
-                    opacity: 0,
-                    duration: .1
-                }).to('.sidebar-menu ul li:nth-child(2)', {
-                    y: -30,
-                    opacity: 0,
-                    duration: .1
-                }).to('.sidebar-menu ul li:nth-child(3)', {
-                    y: -30,
-                    opacity: 0,
-                    duration: .1
-                }).to('.sidebar-menu ul li:nth-child(4)', {
-                    y: -30,
-                    opacity: 0,
-                    duration: .1
-                }).to('.sidebar-menu ul li:nth-child(5)', {
-                    y: -30,
-                    opacity: 0,
-                    duration: .1,
-                    onComplete: () => {
+                let countLi = 1;
+                delayAnime(() => {
+                    $('.sidebar-menu__list li').each((i, item) => {
 
-                        // Закрываем sidebarMenu
-                        viewSideBar.animeHiddenBlockMenu();
+                        tl.to(`.sidebar-menu ul li:nth-child(${countLi + 1})`, {
+                            y: -30,
+                            opacity: 0,
+                            duration: .1
+                        })
 
-                        //  Через секунду возвращаем элементы в начальное состояние
-                        delayAnime(() => {
+                        if (countLi === $('.sidebar-menu__list li').length) {
 
-                            tl.to('.sidebar-menu ul li:nth-child(1)', {
-                                y: 30,
+                            tl.to(`.sidebar-menu ul li:nth-child(${countLi + 1})`, {
+                                y: -30,
                                 opacity: 0,
-                                duration: .1
-                            }).to('.sidebar-menu ul li:nth-child(2)', {
-                                y: 30,
-                                opacity: 0,
-                                duration: .1
-                            }).to('.sidebar-menu ul li:nth-child(3)', {
-                                y: 30,
-                                opacity: 0,
-                                duration: .1
-                            }).to('.sidebar-menu ul li:nth-child(4)', {
-                                y: 30,
-                                opacity: 0,
-                                duration: .1
-                            }).to('.sidebar-menu ul li:nth-child(5)', {
-                                y: 30,
-                                opacity: 0,
-                                duration: .1
+                                duration: .1,
+                                onComplete: () => {
+
+                                    //  Возвращаем пункты меню в начальное состояние
+                                    $('.sidebar-menu__list li').each((i, item) => {
+
+                                        tl.to(`.sidebar-menu ul li:nth-child(${countLi - 1})`, {
+                                            y: 30,
+                                            opacity: 0,
+                                            duration: .1
+                                        });
+
+                                    });
+
+                                    // Закрываем sidebarMenu
+                                    viewSideBar.animeHiddenBlockMenu();
+
+                                    viewSidebarMenu = true;
+
+                                }
                             })
-
-                        }, 1000);
-
-                        viewSidebarMenu = true;
-                    }
-                })
+                        }
+                        countLi++;
+                    });
+                });
 
             }
-            
+
             count++;
         }
-        
+
 
     });
 

@@ -9,7 +9,7 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'js/bundle.[hash].min.js',
+    filename: 'js/bundle.min.js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -48,8 +48,8 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[hash].[ext]',
-              outputPath: 'images/kompleksnaya-podderzhka-sayta/',
+              name: '[name].[ext]',
+              outputPath: 'images/',
             },
           },
           {
@@ -82,7 +82,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'fonts/[name].[hash].[ext]',
+              name: 'fonts/[name].[ext]',
               outputPath: '',
             }
           }
@@ -131,14 +131,65 @@ module.exports = {
         'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
       }
     }),
+    new HtmlWebpackPlugin({
+      filename: 'contact.html',
+      template: 'src/assets/contact.html',
+      minify: {
+        mode: 'production',
+        collapseWhitespace: true,
+        removeComments: true,
+        rNWrYVqxCXRmKPRaFd1MJhWs4SqUkaf7rd: true,
+        rNWrYVqxCXRmKPRaFd1MJhWs4SqUkaf7rd: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      },
+      scriptLoading: 'defer',
+      meta: {
+        'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      }
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'solutions.html',
+      template: 'src/assets/solutions.html',
+      minify: {
+        mode: 'production',
+        collapseWhitespace: true,
+        removeComments: true,
+        rNWrYVqxCXRmKPRaFd1MJhWs4SqUkaf7rd: true,
+        rNWrYVqxCXRmKPRaFd1MJhWs4SqUkaf7rd: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      },
+      scriptLoading: 'defer',
+      meta: {
+        'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      }
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'solutions-art-1.html',
+      template: 'src/assets/solutions-art/1.html',
+      minify: {
+        mode: 'production',
+        collapseWhitespace: true,
+        removeComments: true,
+        rNWrYVqxCXRmKPRaFd1MJhWs4SqUkaf7rd: true,
+        rNWrYVqxCXRmKPRaFd1MJhWs4SqUkaf7rd: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      },
+      scriptLoading: 'defer',
+      meta: {
+        'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      }
+    }),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i
     }),
     new OptimizeCSSAssetsPlugin(),
     new MiniCssExtractPlugin({
-      filename: "css/[name].min.css",
+      filename: "css/bundle.min.css",
       // chunkFilename: "css/[id].[contenthash].css"
-      chunkFilename: "css/[id].[hash].css"
+      // chunkFilename: "css/bundle.min.css"
     }),
     new CleanWebpackPlugin(),
   ],

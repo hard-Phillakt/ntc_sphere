@@ -9,27 +9,27 @@ class Layers {
     }
 
     // Показ синего фона на 50% 
-    startViewLayer(item, title) {
+    animateViewLayer(width, height, realIndex) {
 
-        this.gsap.to(item, {
-            x: `-50%`,
-            duration: .6,
-            delay: .6
-        })
+        // Очищаем все фоны 
+        this.gsap.to(`.animate__layer`, {
+            clip: `rect(0px, 0px, ${height}px, ${width}px)`,
+            duration: 1,
+        });
 
+        // Задаём анимацию активному фону
+        this.gsap.to(`.animate__layer_${realIndex}`, {
+            clip: `rect(0px, ${width / 2}px, ${height}px, 0px)`,
+            delay: .6,
+            duration: 1,
+        });
     }
 
     // Закрытие фона
-    endViewLayer(item) {
+    // endViewLayer(item) {
 
-        this.tl.to(item, {
-            x: `0%`,
-            duration: .2,
-        }).to(item, {
-            x: `-100%`,
-            delay: .3
-        })
-    }
+
+    // }
 
 }
 

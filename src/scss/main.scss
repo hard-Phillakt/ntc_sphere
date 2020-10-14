@@ -50,7 +50,7 @@ h3 {
 
         @media (max-width: 992px) {
             display: none;
-         }
+        }
 
         &__before {
             content: "";
@@ -87,10 +87,6 @@ body {
 #app {
     cursor: grab;
     overflow: hidden;
-}
-
-#page {
-
 
     .hamburger {
         display: none;
@@ -101,6 +97,15 @@ body {
     }
 }
 
+#page {
+    .hamburger {
+        display: none;
+
+        @media (max-width: 992px) and (min-width: 300px) {
+            display: block;
+        }
+    }
+}
 
 .tac {
     text-align: center;
@@ -128,9 +133,134 @@ body {
     font-weight: 400;
 }
 
+.fontw-100 {
+    font-weight: 100;
+}
+
 .wdh-100 {
     width: 100%;
 }
+
+.max-wdh-100 {
+    max-width: 100%;
+}
+
+.height-600 {
+    height: 600px;
+}
+
+
+.typed-cursor.typed-cursor--blink {
+    color: #ff5f145e;
+}
+
+/* Cursor */
+.typed-cursor {
+    display: none;
+    color: #ff5f145e;
+}
+
+/* If fade out option is set */
+.typed-fade-out {
+    color: #ff5f145e;
+}
+
+.hamburger {
+    position: fixed;
+    top: 30px;
+    right: 15px;
+    z-index: 4;
+
+    @media (max-width: 1400) and (min-width: 1200px) {
+        top: 10px;
+    }
+
+    @media (max-width: 500px) and (min-width: 300px) {
+        top: 15px;
+    }
+}
+
+.hamburger-box {
+    width: 30px;
+}
+
+.hamburger-inner,
+.hamburger-inner::after,
+.hamburger-inner::before {
+    width: 30px;
+    height: 2px;
+    background: #ff5e14;
+}
+
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::after,
+.hamburger.is-active .hamburger-inner::before {
+    background: #ff5e14;
+}
+
+.swiper-pagination-bullet {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#marker {
+    width: 50px;
+    height: 50px;
+    background: #ff5f1473;
+    border-radius: 5em;
+    box-shadow: 1px 1px 7px #00000087;
+}
+
+.br-radius {
+    &_10 {
+        border-radius: 10px;
+    }
+    &_20 {
+        border-radius: 20px;
+    }
+    &_30 {
+        border-radius: 30px;
+    }
+    &_40 {
+        border-radius: 40px;
+    }
+    &_55 {
+        border-radius: 55px;
+    }
+    &_100e {
+        border-radius: 100em;
+    }
+}
+
+// Preloader ################
+
+#preloader {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 9999;
+    transition: all 0.3s ease-in-out;
+
+    .preloader-icon {
+        img {
+            transform: scale(2);
+        }
+    }
+}
+
+// Preloader end ############
+
+
+.gray-line {
+    height: 1px;
+    background: #DAE1E5;
+}
+
 
 .display {
     &__2000 {
@@ -203,74 +333,3 @@ body {
         }
     }
 }
-
-
-.typed-cursor.typed-cursor--blink  {
-    color: #ff5f145e;
-}
-
-/* Cursor */
-.typed-cursor {
-    display: none;
-    color: #ff5f145e;
-}
-
-/* If fade out option is set */
-.typed-fade-out {
-    color: #ff5f145e;
-}
-
-.hamburger {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 4;
-
-    @media (max-width: 1400) and (min-width: 1200px) {
-        top: 10px;
-    }
-
-    @media (max-width: 500px) and (min-width: 300px) {
-        top: 15px;
-    }
-}
-
-.hamburger-box {
-    width: 30px;
-}
-
-.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before {
-    width: 30px;
-    height: 2px;
-    background: #ff5e14;
-}
-
-.hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner::after, .hamburger.is-active .hamburger-inner::before {
-    background: #ff5e14;
-}
-
-
-// Preloader ################
-
-#preloader {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    background: #fff;
-    z-index: 9999;
-    transition: all .3s ease-in-out;
-
-    .preloader-icon {
-        
-        img {
-            transform: scale(2);
-        }
-    }
-}
-
-
-
-// Preloader end ############

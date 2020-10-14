@@ -3,8 +3,8 @@
         line-height: 1.4;
     }
 
-    img {
-        width: 100%;
+    p {
+        margin: 0;
     }
 
     &__about-strategy-desc {
@@ -22,13 +22,54 @@
         }
     }
 
-    .icon-sphere {
+    // Секция "Основные преимущества АСКВ НТЦ Сфера"
+    &__advantages {
 
+        &-block {
+            display: flex;
+            flex-wrap: wrap;
+
+            &_item {
+                border: 1px solid #DAE1E5;
+                width: 30%;
+                padding: 15px 20px;
+                margin: 10px;
+
+
+                @media (max-width: 992px) and (min-width: 768px) {
+                    width: 45%;
+                }
+
+                @media (max-width: 767px) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    // Секция "Другие услуги"
+    &__other-services {
+        
+
+        &_linearGradient-blue {
+            background: linear-gradient(90deg, #DFE9F3 0%, #FFFFFF 100%);
+        }
+    }
+
+    .icon-sphere {
     }
 
     &__box-text {
         @media (max-width: 500px) {
             padding-left: 50px;
+        }
+    }
+
+    &__link {
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: #ff5e14;
         }
     }
 
@@ -52,4 +93,144 @@
             font-size: 14px;
         }
     }
+
+    // SECTION SOLUTIONS #######################
+    &__solutions {
+        &-box-link {
+            position: relative;
+            transition: all 0.3s ease-in-out;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: #09366282;
+                border-radius: 55px;
+                opacity: 0;
+                transition: all 0.3s ease-in-out;
+            }
+
+            &:hover::before {
+                opacity: 1;
+            }
+
+            &:hover .content__solutions_icon-sphere span {
+                background: #ffffff66 url("../../images/icons/blue-sphere.svg") no-repeat;
+                background-position: center;
+                transition: all 0.3s ease-in-out;
+                transform: translate(-1px, 4px) scale(0.5);
+            }
+
+            &:hover .content__solutions_img {
+                box-shadow: 1px 1px 20px rgba(76, 97, 112, 0.5);
+                background-size: 110% !important;
+            }
+
+            &:hover .content__solutions_img-link {
+                opacity: 1;
+                color: #fff;
+            }
+        }
+
+        &_title {
+            &-link {
+                color: #00235a;
+                text-decoration: underline;
+
+                &:hover {
+                    color: #00235a;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        &_desc {
+            &-lineheight-2-0 {
+                line-height: 2;
+            }
+        }
+
+        &_img {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            height: 225px;
+            background-size: 100% !important;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 1px 1px 10px rgba(76, 97, 112, 0.5);
+
+            &-link {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                opacity: 0;
+                color: #fff;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+
+        &_icon {
+            &-sphere {
+                span {
+                    display: inline-flex;
+                    width: 106px;
+                    height: 106px;
+                    background: #ffffffc4 url("../../images/icons/blue-sphere.svg") no-repeat;
+                    background-size: 50%;
+                    background-position: 50%;
+                    border-radius: 100em;
+                    transform: translate(-1px, 4px);
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+        }
+
+        &_list {
+            list-style: none;
+
+            li {
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 5px;
+                    left: -25px;
+                    width: 10px;
+                    height: 10px;
+                    background: #ff5e14;
+                }
+
+                &:hover::before {
+                    background: #ff5e147d;
+                }
+
+                a {
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        color: #ff5e14;
+                    }
+                }
+            }
+        }
+
+
+        &_table {
+
+            .table>tbody>tr:nth-child(1)>td:nth-child(1), .table>tbody>tr:nth-child(1)>td:nth-child(2){
+                border-top: 0;
+            }
+            
+            .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+                padding: 15px 0;
+                border-bottom: 1px solid #6b6b6b;
+                border-top: 0;
+            }
+        }
+    }
+    // SECTION SOLUTIONS END ###################
 }
