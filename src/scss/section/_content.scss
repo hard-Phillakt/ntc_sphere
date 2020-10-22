@@ -96,6 +96,12 @@
 
     // SECTION SOLUTIONS #######################
     &__solutions {
+
+        &-box {
+
+        }
+
+
         &-box-link {
             position: relative;
             transition: all 0.3s ease-in-out;
@@ -108,7 +114,6 @@
                 width: 100%;
                 height: 100%;
                 background: #09366282;
-                border-radius: 55px;
                 opacity: 0;
                 transition: all 0.3s ease-in-out;
             }
@@ -138,11 +143,11 @@
         &_title {
             &-link {
                 color: #00235a;
-                text-decoration: underline;
+                // text-decoration: underline;
 
                 &:hover {
                     color: #00235a;
-                    text-decoration: none;
+                    text-decoration: underline;
                 }
             }
         }

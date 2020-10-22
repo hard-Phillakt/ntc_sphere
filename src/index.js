@@ -20,7 +20,8 @@ import index from './js/index';
 import Swiper from 'swiper';
 import $ from "jquery";
 import gsap from "gsap";
-import Typed from 'typed.js';
+import waves from '../node_modules/node-waves/dist/waves';
+// import Typed from 'typed.js';
 
 import MenuAnime from './js/anime-menu';
 import CursorAnime from './js/anime-cursor';
@@ -345,6 +346,19 @@ $(document).ready(function () {
 
     //  Init MapBox
     if($('#page #map').is('#map')) initMapBox();
+
+
+
+    //  Волны для кнопок
+    var config = {
+        duration: 500,
+        delay: 200
+    };
+                    
+    Waves.init(config);
+
+    Waves.attach('.button-solutions-waves');
+    Waves.attach('.content__solutions-box-link');
 
 });
 

@@ -2,6 +2,8 @@
 @import "../../node_modules/swiper/css/swiper.min.css";
 @import "../../node_modules/animate.css/animate.min.css";
 @import "../../node_modules/hamburgers/dist/hamburgers.min.css";
+@import "../../node_modules/node-waves/dist/waves.min.css";
+
 @import "../../node_modules/material-icons/iconfont/material-icons.css";
 @import "../scss/indentation";
 @import "../scss/ui/flex";
@@ -259,6 +261,11 @@ body {
 .gray-line {
     height: 1px;
     background: #DAE1E5;
+}
+
+.orange-line {
+    height: 2px;
+    background: #FF5E14;
 }
 
 

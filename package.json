@@ -12,6 +12,7 @@
     "jquery": "^3.5.1",
     "mask-input": "^1.0.3",
     "material-icons": "^0.3.1",
+    "node-waves": "^0.7.6",
     "parallax-js": "^3.1.0",
     "rellax": "^1.12.1",
     "swiper": "^5.3.8",
@@ -46,7 +47,7 @@
   },
   "scripts": {
     "build": "webpack --mode production",
-    "serv": "webpack-dev-server --open", 
+    "serv": "webpack-dev-server --open",
     "dev": "webpack-dev-server --host 127.0.0.1 --port 80"
   },
   "keywords": [],
