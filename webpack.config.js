@@ -183,8 +183,8 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
-      filename: 'solutions-2.html',
-      template: 'src/assets/solutions-2.html',
+      filename: 'solutions_new1.html',
+      template: 'src/assets/solutions_new1.html',
       minify: {
         mode: 'production',
         collapseWhitespace: true,

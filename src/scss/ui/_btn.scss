@@ -22,6 +22,13 @@
         &-waves {
             border: 1px solid #DAE1E5;
             border-radius: 3px;
+            text-decoration: none;
+            color: #000;
+
+            &:hover, &:focus {
+                text-decoration: none;
+                color: #000;
+            }
         }
     }
 }
